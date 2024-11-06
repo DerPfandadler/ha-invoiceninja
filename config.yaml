@@ -1,0 +1,40 @@
+name: Invoice Ninja
+version: dev13
+slug: invoiceninja
+description: Invoice Ninja Addon for Home Assistant
+url: https://github.com/DerPfandadler/My-Addons/tree/main/invoiceninja
+arch:
+  - aarch64
+  - amd64
+  - armv7
+init: false
+services:
+  - mysql:need
+hassio_api: true
+ports:
+  80/tcp: 8003
+
+options:
+  app_env: 'production'
+  app_debug: 0
+  app_url: 'http://ninja.dev'
+  app_key: 'your-app-key'
+  app_cipher: 'AES-256-CBC'
+  db_type: 'mysql'
+  db_strict: 'false'
+  db_host: 'localhost'
+  db_database: 'ninja'
+  db_username: 'ninja'
+  db_password: 'ninja'
+schema:
+  app_env: str
+  app_debug: int
+  app_url: str
+  app_key: str
+  app_cipher: str
+  db_type: str
+  db_strict: str
+  db_host: str
+  db_database: str
+  db_username: str
+  db_password: str
