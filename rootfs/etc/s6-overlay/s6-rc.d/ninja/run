@@ -1,0 +1,25 @@
+#!/command/with-contenv bashio
+# ==============================================================================
+# Home Assistant Community Add-on: InvoiceNinja
+# # Start the original docker-entrypoint and supervisord under s6
+# ==============================================================================
+
+bashio::log.info "Copying env vars..."
+
+# Set environment variables
+export APP_KEY=$(bashio::config 'app_key')
+export DB_HOST=$(bashio::services "mysql" "host")
+export DB_DATABASE=$(bashio::config 'db_database')
+export DB_USERNAME=$(bashio::config 'db_username')
+export DB_PASSWORD=$(bashio::config 'db_password')
+
+echo "172.30.32.2 invoiceninja.test" >> /etc/hosts
+
+# Set the working directory
+cd /var/www/app || exit 1
+
+# Log the values for debugging
+bashio::log.info "Starting Invoice Ninja with APP_URL=${APP_URL}"
+bashio::log.info "Database host: ${DB_HOST}"
+
+exec /usr/local/bin/docker-entrypoint supervisord -n
