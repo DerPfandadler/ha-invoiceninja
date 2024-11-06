@@ -6,7 +6,9 @@ FROM invoiceninja/invoiceninja:latest AS invoiceninja
 # Stage 3: Final Stage (combining both images)
 FROM base
 
-COPY --from=invoiceninja / / 
+COPY --from=invoiceninja / /
+
+RUN apk add --no-cache nginx=1.26.2-r0
 
 # Set the working directory to /var/www/app
 WORKDIR /var/www/app
