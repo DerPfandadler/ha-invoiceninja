@@ -7,6 +7,13 @@
 bashio::log.info "Copying env vars..."
 
 # Set environment variables
+if bashio::addon.ingress_url; then
+    export APP_URL=$(bashio::addon.ingress_url)
+    bashio::log.info "APP_URL dynamically set to ${APP_URL} for Ingress access."
+else
+    export APP_URL="http://localhost"
+    bashio::log.warning "Failed to fetch Ingress URL, defaulting APP_URL to localhost."
+fi
 export APP_KEY=$(bashio::config 'app_key')
 export DB_HOST=$(bashio::services "mysql" "host")
 export DB_DATABASE=$(bashio::config 'db_database')
