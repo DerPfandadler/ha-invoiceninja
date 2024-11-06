@@ -7,8 +7,6 @@
 bashio::log.info "Copying env vars..."
 
 # Set environment variables
-export APP_ENV=$(bashio::config 'app_env')
-export APP_DEBUG=$(bashio::config 'app_debug')
 export APP_URL=$(bashio::config 'app_url')
 export APP_KEY=$(bashio::config 'app_key')
 export DB_HOST=$(bashio::services "mysql" "host"):$(bashio::services "mysql" "port")
@@ -22,8 +20,5 @@ cd /var/www/app || exit 1
 # Log the values for debugging
 bashio::log.info "Starting Invoice Ninja with APP_URL=${APP_URL}"
 bashio::log.info "Database host: ${DB_HOST}"
-
-bashio::log.info "Listing files in /var/www/app..."
-ls -la /var/www/app
 
 exec /usr/local/bin/docker-entrypoint supervisord -n
