@@ -1,7 +1,6 @@
 #!/command/with-contenv bashio
 # shellcheck shell=bash
 # ==============================================================================
-# Home Assistant Community Add-on: phpMyAdmin
 # Configures nginx
 # ==============================================================================
 declare upload_limit
