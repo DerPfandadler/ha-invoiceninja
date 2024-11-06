@@ -7,7 +7,6 @@
 bashio::log.info "Copying env vars..."
 
 # Set environment variables
-export APP_URL=$(bashio::config 'app_url')
 export APP_KEY=$(bashio::config 'app_key')
 export DB_HOST=$(bashio::services "mysql" "host")
 export DB_DATABASE=$(bashio::config 'db_database')
