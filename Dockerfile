@@ -24,6 +24,7 @@ RUN chmod +x /etc/s6-overlay/s6-rc.d/*/up
 
 # Set environment variables (use what is already set in Invoice Ninja)
 ENV IS_DOCKER=true
+ENV APP_URL=http://invoiceninja.test
 ENV APP_DEBUG=0
 ENV APP_ENV=production
 ENV LOG=errorlog
