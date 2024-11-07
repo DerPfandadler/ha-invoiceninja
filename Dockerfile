@@ -31,8 +31,9 @@ ENV APP_ENV=production
 ENV LOG=errorlog
 ENV SNAPPDF_EXECUTABLE_PATH=/usr/bin/chromium-browser
 ENV DB_TYPE=mysql
-ENV DB_STRICT=false
 ENV REQUIRE_HTTPS=false
+ENV APP_URL=http://in.localhost:8003/
+ENV TRUSTED_PROXIES='*'
 
 
 # Build arguments
